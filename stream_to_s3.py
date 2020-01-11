@@ -41,6 +41,8 @@ def main():
     multipart_upload_response = s3_client.create_multipart_upload(Bucket=s3_bucket, Key=s3_key)
     upload_id = multipart_upload_response['UploadId']
     try:
+        # TODO: In testing with a ~180MB file and a 1MB chunk_size it only ran for 23 iterations.
+        # That math doesn't work out; probably need to look at what's going on there.
         for chunk_number, content_chunk in enumerate(tqdm(req.iter_content(chunk_size=FIVE_MB_IN_BYTES))):
             s3_client.upload_part(Bucket=s3_bucket, Key=s3_key, UploadId=upload_id, PartNumber=chunk_number)
             size += len(content_chunk)
