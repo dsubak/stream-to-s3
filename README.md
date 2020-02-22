@@ -4,7 +4,7 @@ Streams a remote file to a given S3 bucket with a constant memory footprint.
 # Usage
 This is not currently packaged, in the interim, install from GitHub with the following command
 ```
-pip install git+git://github.com/dsubak/stream-to-s3.git#egg=S3Streamer_dsubak
+pip install git+git://github.com/dsubak/stream-to-s3.git
 ```
  
 ```    
